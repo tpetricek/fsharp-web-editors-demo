@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link href="/content/editor.css" rel="stylesheet" />
+  <link href="/content/codemirror.css" rel="stylesheet" />
+  <script src="/scripts/intellisense.js"></script>
+  <script src="/scripts/codemirror/codemirror.js"></script>
+  <script src="/scripts/codemirror/codemirror-intellisense.js"></script>
+  <script src="/scripts/codemirror/codemirror-compiler.js"></script>
+  <script src="/scripts/codemirror/mode/markdown.js"></script>
+  <script src="/scripts/codemirror/mode/fsharp.js"></script>
+</head>
+<body>
+  <div style="width:800px;height:600px" id="demo1">let x = 10</div>
+  <script>setupEditor(document.getElementById('demo1'));</script>
+</body>
+</html>

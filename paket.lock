@@ -1,0 +1,13 @@
+NUGET
+  remote: https://www.nuget.org/api/v2
+  specs:
+    FSharp.Compiler.Service (2.0.0.6)
+    FSharp.Core (4.0.0.1)
+    Suave (1.1.1)
+      FSharp.Core (>= 3.1.2.5)
+GITHUB
+  remote: tpetricek/fsharp-web-editors
+  specs:
+    FULLPROJECT (9f46c0ab4cb9e99db344f02a206aafe05617f967)
+      FSharp.Compiler.Service
+      Suave
