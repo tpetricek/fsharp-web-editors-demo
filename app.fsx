@@ -14,11 +14,11 @@ let scriptName = __SOURCE_DIRECTORY__ + "/test.fsx"
 
 let app ctx = async {
   try
+    printfn "Handling: %A" ctx.request
     let! res = 
       ctx |> choose [
         Editor.part scriptName scriptSetup (FSharpChecker.Create())
         Files.browse (System.IO.Path.Combine(__SOURCE_DIRECTORY__, "paket-files", "tpetricek", "fsharp-web-editors", "client")) ]
-    printfn "Handling: %A" ctx.request
     printfn "Produced: %A" ctx.response
     return res 
   with e ->
