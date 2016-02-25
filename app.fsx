@@ -12,11 +12,14 @@ open FsWebTools
 let scriptSetup = [ "open System" ]
 let scriptName = __SOURCE_DIRECTORY__ + "/test.fsx"
 
-let app = request (fun r ->
-  printfn "%A" r
+let app = 
   choose [
     Editor.part scriptName scriptSetup (FSharpChecker.Create())
-    Files.browse (System.IO.Path.Combine(__SOURCE_DIRECTORY__, "paket-files", "tpetricek", "fsharp-web-editors", "client")) ])
+    Files.browse (System.IO.Path.Combine(__SOURCE_DIRECTORY__, "paket-files", "tpetricek", "fsharp-web-editors", "client")) ]
 
-let config = { defaultConfig with bindings = [HttpBinding.mkSimple HTTP "0.0.0.0" 80] }
+let config = 
+  { defaultConfig with 
+      bindings = [HttpBinding.mkSimple HTTP "0.0.0.0" 80] 
+      logger = Logging.Loggers.saneDefaultsFor Logging.Verbose }
+
 startWebServer config app
