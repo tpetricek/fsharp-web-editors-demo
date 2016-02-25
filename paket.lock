@@ -11,7 +11,7 @@ NUGET
 GITHUB
   remote: tpetricek/fsharp-web-editors
   specs:
-    FULLPROJECT (82c6c152e5f233d2d7af30f1ebfa38c44ae6a164)
+    FULLPROJECT (d541090ed5b5598752c731d74093be57f861e8ec)
       FSharp.Compiler.Service
       FSharp.Data
       Suave
