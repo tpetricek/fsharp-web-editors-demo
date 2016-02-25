@@ -12,10 +12,17 @@ open FsWebTools
 let scriptSetup = [ "open System" ]
 let scriptName = __SOURCE_DIRECTORY__ + "/test.fsx"
 
-let app = 
-  choose [
-    Editor.part scriptName scriptSetup (FSharpChecker.Create())
-    Files.browse (System.IO.Path.Combine(__SOURCE_DIRECTORY__, "paket-files", "tpetricek", "fsharp-web-editors", "client")) ]
+let app ctx = async {
+  try
+    let! res = 
+      ctx |> choose [
+        Editor.part scriptName scriptSetup (FSharpChecker.Create())
+        Files.browse (System.IO.Path.Combine(__SOURCE_DIRECTORY__, "paket-files", "tpetricek", "fsharp-web-editors", "client")) ]
+
+    return res 
+  with e ->
+    printfn "Something went wrong: %A" e
+    return None }
 
 let config = 
   { defaultConfig with 
