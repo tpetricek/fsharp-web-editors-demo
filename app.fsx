@@ -16,4 +16,5 @@ let app =
     Editor.part scriptName scriptSetup (FSharpChecker.Create())
     Files.browse (System.IO.Path.Combine(__SOURCE_DIRECTORY__, "paket-files", "tpetricek", "fsharp-web-editors", "client")) ]
 
-startWebServer defaultConfig app
+let config = { defaultConfig with bindings = [HttpBinding.mkSimple HTTP "0.0.0.0" 80] }
+startWebServer config app
