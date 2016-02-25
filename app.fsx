@@ -13,23 +13,14 @@ open FsWebTools
 let scriptSetup = [ "open System" ]
 let scriptName = Path.Combine( __SOURCE_DIRECTORY__, "test.fsx")
 
-let app ctx = async {
-  try
-    printfn "Handling: %A" ctx.request
-    let res = 
-      ctx |> choose [
-        Editor.part scriptName scriptSetup (FSharpChecker.Create())
-        Files.browse (Path.Combine(__SOURCE_DIRECTORY__, "paket-files", "tpetricek", "fsharp-web-editors", "client")) ]
-      |> Async.RunSynchronously
-    printfn "Produced: %A" ctx.response
-    return res
-  with e ->
-    printfn "Something went wrong: %A" e
-    return None }
+let app = 
+  choose [
+    Editor.part scriptName scriptSetup (FSharpChecker.Create())
+    Files.browse (Path.Combine(__SOURCE_DIRECTORY__, "paket-files", "tpetricek", "fsharp-web-editors", "client")) ]
 
 let config = 
   { defaultConfig with 
       bindings = [HttpBinding.mkSimple HTTP "0.0.0.0" 80] 
-      logger = Logging.Loggers.saneDefaultsFor Logging.Verbose }
+      logger = Logging.Loggers.saneDefaultsFor Logging.LogLevel.Warn }
 
 startWebServer config app
