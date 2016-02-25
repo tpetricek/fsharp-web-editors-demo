@@ -18,7 +18,8 @@ let app ctx = async {
       ctx |> choose [
         Editor.part scriptName scriptSetup (FSharpChecker.Create())
         Files.browse (System.IO.Path.Combine(__SOURCE_DIRECTORY__, "paket-files", "tpetricek", "fsharp-web-editors", "client")) ]
-
+    printfn "Handling: %A" ctx.request
+    printfn "Produced: %A" ctx.response
     return res 
   with e ->
     printfn "Something went wrong: %A" e
