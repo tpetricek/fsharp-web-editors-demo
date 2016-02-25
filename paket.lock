@@ -3,11 +3,15 @@ NUGET
   specs:
     FSharp.Compiler.Service (2.0.0.6)
     FSharp.Core (4.0.0.1)
+    FSharp.Data (2.2.5)
+      Zlib.Portable (>= 1.10.0) - framework: portable-net40+sl50+wp80+win80
     Suave (1.1.1)
       FSharp.Core (>= 3.1.2.5)
+    Zlib.Portable (1.11.0) - framework: portable-net40+sl50+wp80+win80
 GITHUB
   remote: tpetricek/fsharp-web-editors
   specs:
-    FULLPROJECT (9f46c0ab4cb9e99db344f02a206aafe05617f967)
+    FULLPROJECT (196a35f70462e1291536b0c1fd4f0e826b51935c)
       FSharp.Compiler.Service
+      FSharp.Data
       Suave
